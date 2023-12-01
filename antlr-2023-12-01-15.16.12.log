@@ -1,0 +1,201 @@
+2023-12-01 15:16:11:908 grammar LogManager.java:25 before: (COMBINED_GRAMMAR Expr (OPTIONS (= tokenVocab ExprLexer)) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT stat) (ALT def) (ALT ifBloco) (ALT whileBloco))) EOF))) (RULE stat (BLOCK (ALT tipo ID Assign expr SemiColon) (ALT ID Assign expr SemiColon) (ALT expr SemiColon))) (RULE def (BLOCK (ALT ID LParen ID (* (BLOCK (ALT Comma ID))) RParen LBrace (BLOCK (ALT (* (BLOCK (ALT stat))) return RBrace))) (ALT (BLOCK (ALT (+ (BLOCK (ALT stat))))) RBrace))) (RULE tipo (BLOCK (ALT 'string') (ALT 'int') (ALT 'float') (ALT 'boolean') (ALT 'double') (ALT 'char'))) (RULE whileBloco (BLOCK (ALT 'while' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco)))) (ALT (? (BLOCK (ALT return))) RBrace) (ALT 'while' LParen expr RParen LBrace return RBrace))) (RULE ifBloco (BLOCK (ALT 'if' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace (? (BLOCK (ALT 'else' LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace)))) (ALT 'if' LParen expr RParen LBrace return RBrace (? (BLOCK (ALT 'else' LBrace return RBrace)))))) (RULE func (BLOCK (ALT ID LParen (* (BLOCK (ALT ID))) (* (BLOCK (ALT Comma ID))) RParen))) (RULE return (BLOCK (ALT RETURN expr SemiColon))) (RULE expr (BLOCK (ALT const) (ALT ID) (ALT func) (ALT expr multiplicaoOp expr) (ALT expr adicaoOp expr) (ALT expr comparacaoOp expr) (ALT expr booleanOp expr))) (RULE EspacoBranco (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\t\n])))) skip))) (RULE multiplicaoOp (BLOCK (ALT '*') (ALT '/') (ALT '%'))) (RULE adicaoOp (BLOCK (ALT '+') (ALT '-'))) (RULE comparacaoOp (BLOCK (ALT '==') (ALT '!=') (ALT '>') (ALT '<') (ALT '>=') (ALT '<='))) (RULE booleanOp (BLOCK (ALT 'and') (ALT '||') (ALT 'or') (ALT '&&'))) (RULE const (BLOCK (ALT INT) (ALT FLOAT) (ALT STR) (ALT BOOL))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) '.' (+ (BLOCK (ALT [0-9])))))) (RULE STR (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET '"'))))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT (~ (SET '\''))))) '\''))))) (RULE BOOL (BLOCK (ALT 'true') (ALT 'false'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE Assign (BLOCK (ALT '='))) (RULE SemiColon (BLOCK (ALT ';'))) (RULE LParen (BLOCK (ALT '('))) (RULE RParen (BLOCK (ALT ')'))) (RULE LBrace (BLOCK (ALT '{'))) (RULE RBrace (BLOCK (ALT '}'))) (RULE Comma (BLOCK (ALT ','))) (RULE Not (BLOCK (ALT '!'))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_]))))))))
+2023-12-01 15:16:11:931 grammar LogManager.java:25 after: (COMBINED_GRAMMAR Expr (OPTIONS (= tokenVocab ExprLexer)) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT stat) (ALT def) (ALT ifBloco) (ALT whileBloco))) EOF))) (RULE stat (BLOCK (ALT tipo ID Assign expr SemiColon) (ALT ID Assign expr SemiColon) (ALT expr SemiColon))) (RULE def (BLOCK (ALT ID LParen ID (* (BLOCK (ALT Comma ID))) RParen LBrace (BLOCK (ALT (* (BLOCK (ALT stat))) return RBrace))) (ALT (BLOCK (ALT (+ (BLOCK (ALT stat))))) RBrace))) (RULE tipo (BLOCK (ALT (SET 'string' 'int' 'float' 'boolean' 'double' 'char')))) (RULE whileBloco (BLOCK (ALT 'while' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco)))) (ALT (? (BLOCK (ALT return))) RBrace) (ALT 'while' LParen expr RParen LBrace return RBrace))) (RULE ifBloco (BLOCK (ALT 'if' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace (? (BLOCK (ALT 'else' LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace)))) (ALT 'if' LParen expr RParen LBrace return RBrace (? (BLOCK (ALT 'else' LBrace return RBrace)))))) (RULE func (BLOCK (ALT ID LParen (* (BLOCK (ALT ID))) (* (BLOCK (ALT Comma ID))) RParen))) (RULE return (BLOCK (ALT RETURN expr SemiColon))) (RULE expr (BLOCK (ALT const) (ALT ID) (ALT func) (ALT expr multiplicaoOp expr) (ALT expr adicaoOp expr) (ALT expr comparacaoOp expr) (ALT expr booleanOp expr))) (RULE EspacoBranco (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\t\n])))) skip))) (RULE multiplicaoOp (BLOCK (ALT (SET '*' '/' '%')))) (RULE adicaoOp (BLOCK (ALT (SET '+' '-')))) (RULE comparacaoOp (BLOCK (ALT (SET '==' '!=' '>' '<' '>=' '<=')))) (RULE booleanOp (BLOCK (ALT (SET 'and' '||' 'or' '&&')))) (RULE const (BLOCK (ALT (SET INT FLOAT STR BOOL)))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) '.' (+ (BLOCK (ALT [0-9])))))) (RULE STR (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET '"'))))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT (~ (SET '\''))))) '\''))))) (RULE BOOL (BLOCK (ALT 'true') (ALT 'false'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE Assign (BLOCK (ALT '='))) (RULE SemiColon (BLOCK (ALT ';'))) (RULE LParen (BLOCK (ALT '('))) (RULE RParen (BLOCK (ALT ')'))) (RULE LBrace (BLOCK (ALT '{'))) (RULE RBrace (BLOCK (ALT '}'))) (RULE Comma (BLOCK (ALT ','))) (RULE Not (BLOCK (ALT '!'))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_]))))))))
+2023-12-01 15:16:11:961 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR Expr (OPTIONS (= tokenVocab ExprLexer)) (RULES (RULE program (BLOCK (ALT (+ (BLOCK (ALT stat) (ALT def) (ALT ifBloco) (ALT whileBloco))) EOF))) (RULE stat (BLOCK (ALT tipo ID Assign expr SemiColon) (ALT ID Assign expr SemiColon) (ALT expr SemiColon))) (RULE def (BLOCK (ALT ID LParen ID (* (BLOCK (ALT Comma ID))) RParen LBrace (BLOCK (ALT (* (BLOCK (ALT stat))) return RBrace))) (ALT (BLOCK (ALT (+ (BLOCK (ALT stat))))) RBrace))) (RULE tipo (BLOCK (ALT (SET 'string' 'int' 'float' 'boolean' 'double' 'char')))) (RULE whileBloco (BLOCK (ALT 'while' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco)))) (ALT (? (BLOCK (ALT return))) RBrace) (ALT 'while' LParen expr RParen LBrace return RBrace))) (RULE ifBloco (BLOCK (ALT 'if' LParen expr RParen LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace (? (BLOCK (ALT 'else' LBrace (+ (BLOCK (ALT stat) (ALT ifBloco) (ALT whileBloco))) (? (BLOCK (ALT return))) RBrace)))) (ALT 'if' LParen expr RParen LBrace return RBrace (? (BLOCK (ALT 'else' LBrace return RBrace)))))) (RULE func (BLOCK (ALT ID LParen (* (BLOCK (ALT ID))) (* (BLOCK (ALT Comma ID))) RParen))) (RULE return (BLOCK (ALT RETURN expr SemiColon))) (RULE expr (BLOCK (ALT const) (ALT ID) (ALT func) (ALT expr multiplicaoOp expr) (ALT expr adicaoOp expr) (ALT expr comparacaoOp expr) (ALT expr booleanOp expr))) (RULE multiplicaoOp (BLOCK (ALT (SET '*' '/' '%')))) (RULE adicaoOp (BLOCK (ALT (SET '+' '-')))) (RULE comparacaoOp (BLOCK (ALT (SET '==' '!=' '>' '<' '>=' '<=')))) (RULE booleanOp (BLOCK (ALT (SET 'and' '||' 'or' '&&')))) (RULE const (BLOCK (ALT (SET INT FLOAT STR BOOL))))))
+2023-12-01 15:16:11:961 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR ExprLexer OPTIONS (RULES (RULE T__0 (BLOCK (ALT 'string'))) (RULE T__1 (BLOCK (ALT 'int'))) (RULE T__2 (BLOCK (ALT 'float'))) (RULE T__3 (BLOCK (ALT 'boolean'))) (RULE T__4 (BLOCK (ALT 'double'))) (RULE T__5 (BLOCK (ALT 'char'))) (RULE T__6 (BLOCK (ALT 'while'))) (RULE T__7 (BLOCK (ALT 'if'))) (RULE T__8 (BLOCK (ALT 'else'))) (RULE T__9 (BLOCK (ALT '*'))) (RULE T__10 (BLOCK (ALT '/'))) (RULE T__11 (BLOCK (ALT '%'))) (RULE T__12 (BLOCK (ALT '+'))) (RULE T__13 (BLOCK (ALT '-'))) (RULE T__14 (BLOCK (ALT '=='))) (RULE T__15 (BLOCK (ALT '!='))) (RULE T__16 (BLOCK (ALT '>'))) (RULE T__17 (BLOCK (ALT '<'))) (RULE T__18 (BLOCK (ALT '>='))) (RULE T__19 (BLOCK (ALT '<='))) (RULE T__20 (BLOCK (ALT 'and'))) (RULE T__21 (BLOCK (ALT '||'))) (RULE T__22 (BLOCK (ALT 'or'))) (RULE T__23 (BLOCK (ALT '&&'))) (RULE EspacoBranco (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \r\t\n])))) skip))) (RULE INT (BLOCK (ALT (+ (BLOCK (ALT [0-9])))))) (RULE FLOAT (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) '.' (+ (BLOCK (ALT [0-9])))))) (RULE STR (BLOCK (ALT (BLOCK (ALT '"' (* (BLOCK (ALT (~ (SET '"'))))) '"'))) (ALT (BLOCK (ALT '\'' (* (BLOCK (ALT (~ (SET '\''))))) '\''))))) (RULE BOOL (BLOCK (ALT 'true') (ALT 'false'))) (RULE RETURN (BLOCK (ALT 'return'))) (RULE Assign (BLOCK (ALT '='))) (RULE SemiColon (BLOCK (ALT ';'))) (RULE LParen (BLOCK (ALT '('))) (RULE RParen (BLOCK (ALT ')'))) (RULE LBrace (BLOCK (ALT '{'))) (RULE RBrace (BLOCK (ALT '}'))) (RULE Comma (BLOCK (ALT ','))) (RULE Not (BLOCK (ALT '!'))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_]))))))))
+2023-12-01 15:16:12:301 left-recursion LogManager.java:25 expr
+    :   ( {} const<tokenIndex=308> 
+        | ID<tokenIndex=312> 
+        | func<tokenIndex=316> 
+        )
+        (
+          {precpred(_ctx, 4)}?<p=4> multiplicaoOp<tokenIndex=322> expr<tokenIndex=324,p=5>
+                  | {precpred(_ctx, 3)}?<p=3> adicaoOp<tokenIndex=330> expr<tokenIndex=332,p=4>
+                  | {precpred(_ctx, 2)}?<p=2> comparacaoOp<tokenIndex=338> expr<tokenIndex=340,p=3>
+                  | {precpred(_ctx, 1)}?<p=1> booleanOp<tokenIndex=346> expr<tokenIndex=348,p=2>
+        )*
+    ;
+2023-12-01 15:16:12:318 grammar LogManager.java:25 added: (RULE expr (BLOCK (ALT (BLOCK (ALT {} (const (ELEMENT_OPTIONS (= tokenIndex 308)))) (ALT (ID (ELEMENT_OPTIONS (= tokenIndex 312)))) (ALT (func (ELEMENT_OPTIONS (= tokenIndex 316))))) (* (BLOCK (ALT ({precpred(_ctx, 4)}? (ELEMENT_OPTIONS (= p 4))) (multiplicaoOp (ELEMENT_OPTIONS (= tokenIndex 322))) (expr (ELEMENT_OPTIONS (= tokenIndex 324) (= p 5)))) (ALT ({precpred(_ctx, 3)}? (ELEMENT_OPTIONS (= p 3))) (adicaoOp (ELEMENT_OPTIONS (= tokenIndex 330))) (expr (ELEMENT_OPTIONS (= tokenIndex 332) (= p 4)))) (ALT ({precpred(_ctx, 2)}? (ELEMENT_OPTIONS (= p 2))) (comparacaoOp (ELEMENT_OPTIONS (= tokenIndex 338))) (expr (ELEMENT_OPTIONS (= tokenIndex 340) (= p 3)))) (ALT ({precpred(_ctx, 1)}? (ELEMENT_OPTIONS (= p 1))) (booleanOp (ELEMENT_OPTIONS (= tokenIndex 346))) (expr (ELEMENT_OPTIONS (= tokenIndex 348) (= p 2)))))))))
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__0=1
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__1=2
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__2=3
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__3=4
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__4=5
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__5=6
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__6=7
+2023-12-01 15:16:12:331 grammar LogManager.java:25 import T__7=8
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__8=9
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__9=10
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__10=11
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__11=12
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__12=13
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__13=14
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__14=15
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__15=16
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__16=17
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__17=18
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__18=19
+2023-12-01 15:16:12:332 grammar LogManager.java:25 import T__19=20
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import T__20=21
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import T__21=22
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import T__22=23
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import T__23=24
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import EspacoBranco=25
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import INT=26
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import FLOAT=27
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import STR=28
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import BOOL=29
+2023-12-01 15:16:12:333 grammar LogManager.java:25 import RETURN=30
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import Assign=31
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import SemiColon=32
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import LParen=33
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import RParen=34
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import LBrace=35
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import RBrace=36
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import Comma=37
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import Not=38
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import ID=39
+2023-12-01 15:16:12:334 grammar LogManager.java:25 import 'string'=1
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'int'=2
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'float'=3
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'boolean'=4
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'double'=5
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'char'=6
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'while'=7
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'if'=8
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import 'else'=9
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '*'=10
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '/'=11
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '%'=12
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '+'=13
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '-'=14
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '=='=15
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '!='=16
+2023-12-01 15:16:12:335 grammar LogManager.java:25 import '>'=17
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '<'=18
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '>='=19
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '<='=20
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import 'and'=21
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '||'=22
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import 'or'=23
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '&&'=24
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import 'return'=30
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '='=31
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import ';'=32
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '('=33
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import ')'=34
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '{'=35
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '}'=36
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import ','=37
+2023-12-01 15:16:12:336 grammar LogManager.java:25 import '!'=38
+2023-12-01 15:16:12:337 grammar LogManager.java:25 tokens={T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, EspacoBranco=25, INT=26, FLOAT=27, STR=28, BOOL=29, RETURN=30, Assign=31, SemiColon=32, LParen=33, RParen=34, LBrace=35, RBrace=36, Comma=37, Not=38, ID=39, 'string'=1, 'int'=2, 'float'=3, 'boolean'=4, 'double'=5, 'char'=6, 'while'=7, 'if'=8, 'else'=9, '*'=10, '/'=11, '%'=12, '+'=13, '-'=14, '=='=15, '!='=16, '>'=17, '<'=18, '>='=19, '<='=20, 'and'=21, '||'=22, 'or'=23, '&&'=24, 'return'=30, '='=31, ';'=32, '('=33, ')'=34, '{'=35, '}'=36, ','=37, '!'=38}
+2023-12-01 15:16:12:337 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, EspacoBranco=25, INT=26, FLOAT=27, STR=28, BOOL=29, RETURN=30, Assign=31, SemiColon=32, LParen=33, RParen=34, LBrace=35, RBrace=36, Comma=37, Not=38, ID=39}
+2023-12-01 15:16:12:337 semantics LogManager.java:25 strings={'string'=1, 'int'=2, 'float'=3, 'boolean'=4, 'double'=5, 'char'=6, 'while'=7, 'if'=8, 'else'=9, '*'=10, '/'=11, '%'=12, '+'=13, '-'=14, '=='=15, '!='=16, '>'=17, '<'=18, '>='=19, '<='=20, 'and'=21, '||'=22, 'or'=23, '&&'=24, 'return'=30, '='=31, ';'=32, '('=33, ')'=34, '{'=35, '}'=36, ','=37, '!'=38}
+2023-12-01 15:16:12:354 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2023-12-01 15:16:12:355 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, {1..6, 26..29, 39}, 8, {7, 30, 36}]
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 
+DECISION 1 in rule program
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 look=[{1..8, 26..30, 36, 39}, <EOF>]
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 
+DECISION 2 in rule stat
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 look=[{1..6}, 39, {26..29, 39}]
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 
+DECISION 3 in rule def
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 look=[37, 34]
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:356 LL1 LogManager.java:25 
+DECISION 4 in rule def
+2023-12-01 15:16:12:357 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, 30]
+2023-12-01 15:16:12:357 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:357 LL1 LogManager.java:25 
+DECISION 5 in rule def
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, 36]
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 
+DECISION 6 in rule def
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 look=[39, {1..6, 26..29, 39}]
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 
+DECISION 7 in rule whileBloco
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, 8]
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:358 LL1 LogManager.java:25 
+DECISION 8 in rule whileBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[{1..6, 8, 26..29, 39}, {<EOF>, 1..8, 26..30, 36, 39}]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 9 in rule whileBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[30, 36]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 10 in rule whileBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[7, {30, 36}, 7]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 11 in rule ifBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, 8, {7, 30, 36}]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 12 in rule ifBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[{1..8, 26..30, 36, 39}, {30, 36}]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 13 in rule ifBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[30, 36]
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 
+DECISION 14 in rule ifBloco
+2023-12-01 15:16:12:359 LL1 LogManager.java:25 look=[{1..6, 26..29, 39}, 8, {7, 30, 36}]
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 
+DECISION 15 in rule ifBloco
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 look=[{1..8, 26..30, 36, 39}, {30, 36}]
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 
+DECISION 16 in rule ifBloco
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 look=[30, 36]
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:360 LL1 LogManager.java:25 
+DECISION 17 in rule ifBloco
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 look=[9, {<EOF>, 1..8, 26..30, 36, 39}]
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 
+DECISION 18 in rule ifBloco
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 look=[9, {<EOF>, 1..8, 26..30, 36, 39}]
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 
+DECISION 19 in rule ifBloco
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 look=[8, 8]
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 
+DECISION 20 in rule func
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 look=[39, {34, 37}]
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 
+DECISION 21 in rule func
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 look=[37, 34]
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 LL(1)? true
+2023-12-01 15:16:12:361 LL1 LogManager.java:25 
+DECISION 22 in rule expr
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 look=[{26..29}, 39, 39]
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 
+DECISION 23 in rule expr
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 look=[null, null, null, null]
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 
+DECISION 24 in rule expr
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 look=[null, null]
+2023-12-01 15:16:12:362 LL1 LogManager.java:25 LL(1)? false
+2023-12-01 15:16:12:414 action-translator LogManager.java:25 translate 
+2023-12-01 15:16:12:415 action-translator LogManager.java:25 translate precpred(_ctx, 4)
+2023-12-01 15:16:12:415 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2023-12-01 15:16:12:415 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2023-12-01 15:16:12:415 action-translator LogManager.java:25 translate precpred(_ctx, 1)
+2023-12-01 15:16:12:417 action-translator LogManager.java:25 translate precpred(_ctx, 4)
+2023-12-01 15:16:12:417 action-translator LogManager.java:25 translate precpred(_ctx, 3)
+2023-12-01 15:16:12:417 action-translator LogManager.java:25 translate precpred(_ctx, 2)
+2023-12-01 15:16:12:417 action-translator LogManager.java:25 translate precpred(_ctx, 1)

@@ -1,0 +1,12 @@
+if(!teste){
+    func{}   
+}
+
+while(func();)
+
+funcao(variavelA,variavelB){
+
+    return variavelA+variavelB;
+}
+
+printResult(addNumbers(x, y));
